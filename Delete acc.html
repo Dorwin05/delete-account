@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delete Account - AR-CADAMY</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .card {
+        background: #fff;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        text-align: center;
+        max-width: 400px;
+        width: 90%;
+    }
+    h1 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+    input[type="text"], input[type="email"] {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+    }
+    button {
+        background-color: #ff4d4d;
+        color: #fff;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    button:hover {
+        background-color: #e60000;
+    }
+    .message {
+        margin-top: 15px;
+        font-size: 15px;
+        color: green;
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Delete Account</h1>
+    <p>Enter your registered email and name to delete your account:</p>
+
+    <form id="deleteForm">
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Registered Email" required>
+        <button type="submit">Submit Request</button>
+    </form>
+
+    <div class="message" id="message"></div>
+</div>
+
+<script>
+    document.getElementById("deleteForm").addEventListener("submit", function(e){
+        e.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+
+        // Simple validation
+        if(name && email){
+            // Show confirmation message
+            document.getElementById("message").innerText = 
+                `Hi ${name}, your delete request for ${email} has been submitted. We will process it within 3-5 working days.`;
+
+            // Optional: Clear form
+            document.getElementById("deleteForm").reset();
+
+            // Optional: send email using mailto (will open default mail client)
+            // window.location.href = `mailto:your-email@example.com?subject=Delete My Account – AR-CADAMY&body=Name: ${name}%0AEmail: ${email}`;
+        } else {
+            document.getElementById("message").innerText = "Please fill out both fields!";
+        }
+    });
+</script>
+
+</body>
+</html>
